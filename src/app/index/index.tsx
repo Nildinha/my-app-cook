@@ -1,22 +1,41 @@
-import {View, Text} from 'react-native';
-import { styles } from './styles';
+import { View, Text, ScrollView } from 'react-native';
+import { styles } from './styles'
 import { Ingredient } from '@/components/ingredient';
 
-export default function Home(){
 
-    return(
+
+
+export default function Home() {
+
+    function handleToggleSelected(){
+        
+    }
+
+    return (
         <View style={styles.container}>
+
             <Text style={styles.title}>
-                Escolha {"\n"}
-                <Text>os produtos</Text>
-                </Text>
-                <Text style={styles.message}>
-                    Descubra receitas baseadas nos produtos que você escolheu.
-                </Text>
-                <Ingredient/>
-                <Ingredient/>
-                <Ingredient/>
-                <Ingredient/>
+                Escolha{"\n"}
+                <Text style={styles.subtitle}>os produtos</Text>
+            </Text>
+            <Text style={styles.message}>
+                Descubra receitas baseadas nos produtos que voce escolheu.
+            </Text>
+
+            { /* <Ingredient/>*/}
+
+            <ScrollView 
+            
+                contentContainerStyle={styles.ingredients}
+                showsVerticalScrollIndicator={false}>
+                
+                {Array.from({ length: 100 }).map((item, index) => (
+                    <Ingredient key={index} name="Maça" image="" selected={false} onPress={() => handleToggleSelected}/>))}
+
+            </ScrollView>
+
         </View>
+
     )
 }
+
